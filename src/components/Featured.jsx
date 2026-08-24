@@ -1,25 +1,28 @@
 import React from 'react';
-import Book from './ui/Book';
-import data from '../data'
+import Book from './Book';
+import {books} from '../data';
 
 const Featured = () => {
-    console.log(data)
-  return (
+    console.log(books);
+    console.log();
+    return (
     <section id="features">
-    <div className="container">
+      <div className="container">
         <div className="row">
             <h2 className="section__title">
                 Featured <span className="purple">Books</span>
             </h2>
             <div className="books">
-                <Book />
-                <Book />
-                <Book />
-                <Book />
-        </div>
+                {books
+                .filter((book) => book.rating === 5)
+                .slice(0, 4)
+                .map((book) => (
+                    <Book book={book} key={book.id} />
+                ))}
         </div>
     </div>
-    </section>
+ </div>
+</section>
   );
 }
 

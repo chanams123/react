@@ -13,3 +13,36 @@
   margin-bottom: 24px;
   border-radius: 4px;
 }
+.book__img {
+  width: 150px;
+}
+
+.book__ratings {
+  color: #f4c150;
+  margin-bottom: 8px;
+}
+.highlight__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.nav__link {
+  color: #7342d6;
+  text-decoration: none;
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.menu__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.books {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
