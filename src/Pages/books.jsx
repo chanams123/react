@@ -1,38 +1,42 @@
-import React from "react";
-import { books } from "../data";
+import { useState } from "react";
 import Book from "../components/Book";
 
-const Books = ({books: initialBooks}) => {
-    const {books, setBooks} = useState(initialBooks);
-    
-    function filterBooks(filter) {
-        console.log(filter);
-        if (filter === "low_to_high") {
-            setBooks(
-                books
-                .slice()
-                .sort(
-                    (a,b) =>
-                         (a.salePrice || a.originalPrice) - 
-                         (b.salePrice || b.originalPrice)
-                        )
-                    );
-        }  
-        if (filter === "high_to_low") {
-            setBooks(
-                books
-                .slice()
-                .sort(
-                    (a,b) =>
-                         (b.salePrice || b.originalPrice) - 
-                         (a.salePrice || a.originalPrice)
-                        )
-                    );
-        }  
-        if (filter === "rating") {
-            setBooks(books.slice().sort((a, b) => b.rating - a.rating));
-        }
+const Books = ({ books: initialBooks }) => {
+  const [books, setBooks] = useState(initialBooks || []);
+
+  console.log("initialBooks", initialBooks);
+
+  function filterBooks(filter) {
+    console.log(filter);
+
+    if (filter === "low_to_high") {
+      setBooks(
+        books
+          .slice()
+          .sort(
+            (a, b) =>
+              (a.salePrice || a.originalPrice) -
+              (b.salePrice || b.originalPrice),
+          ),
+      );
     }
+
+    if (filter === "high_to_low") {
+      setBooks(
+        books
+          .slice()
+          .sort(
+            (a, b) =>
+              (b.salePrice || b.originalPrice) -
+              (a.salePrice || a.originalPrice),
+          ),
+      );
+    }
+
+    if (filter === "rating") {
+      setBooks(books.slice().sort((a, b) => b.rating - a.rating));
+    }
+  }
 
   return (
     <div id="books__body">
@@ -45,12 +49,19 @@ const Books = ({books: initialBooks}) => {
                   All Books
                 </h2>
 
-                <select id="filter" defaultValue="DEFAULT" onChange={(event) => filterBooks(event.target.value)}>
+                <select
+                  id="filter"
+                  defaultValue="DEFAULT"
+                  onChange={(event) => filterBooks(event.target.value)}
+                >
                   <option value="DEFAULT" disabled>
                     Sort
                   </option>
+
                   <option value="low_to_high">Price, Low to High</option>
+
                   <option value="high_to_low">Price, High to Low</option>
+
                   <option value="rating">Rating</option>
                 </select>
               </div>
