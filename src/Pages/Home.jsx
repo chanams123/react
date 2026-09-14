@@ -1,7 +1,7 @@
 import React from 'react'
 import Featured from '../components/Featured'
 import Landing from '../components/Landing'
-import Highlights from '../components/highlights'
+import Highlights from '../components/Highlights'
 import Discounted from '../components/Discounted'
 import Explore from '../components/Explore'
 
